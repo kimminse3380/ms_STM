@@ -1,0 +1,2 @@
+../Core/Src/__stdio.c:12:5:__io_putchar	16	static
+../Core/Src/__stdio.c:22:5:__io_getchar	16	static

@@ -1,0 +1,27 @@
+11:54:10 **** Incremental Build of configuration Debug for project MyADC ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:105:12: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  105 |   printf("%d\n", HAL_GetTick());
+      |           ~^     ~~~~~~~~~~~~~
+      |            |     |
+      |            int   uint32_t {aka long unsigned int}
+      |           %ld
+../Core/Src/main.c:96:7: warning: unused variable 'time' [-Wunused-variable]
+   96 |   int time = HAL_GetTick();
+      |       ^~~~
+arm-none-eabi-gcc -o "MyADC.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\ST\workspace\MyADC\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MyADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MyADC.elf
+ 
+arm-none-eabi-size   MyADC.elf 
+arm-none-eabi-objdump -h -S  MyADC.elf  > "MyADC.list"
+   text	   data	    bss	    dec	    hex	filename
+  14128	    120	   1704	  15952	   3e50	MyADC.elf
+Finished building: default.size.stdout
+ 
+Finished building: MyADC.list
+ 
+
+11:54:11 Build Finished. 0 errors, 2 warnings. (took 898ms)
+
